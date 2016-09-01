@@ -5,8 +5,6 @@ defmodule ExkorpionSamples.Mixfile do
     [app: :exkorpion_samples,
      version: "0.1.0",
      elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
      deps: deps]
   end
 
@@ -15,6 +13,6 @@ defmodule ExkorpionSamples.Mixfile do
   end
 
   defp deps do
-    [{:exkorpion, "~> 0.0.1"}]
+    [  { :exkorpion, path: "/Users/Ivan/Sandbox/WesoviLabs/exkorpion/" }]
   end
 end

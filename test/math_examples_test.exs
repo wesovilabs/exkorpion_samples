@@ -9,17 +9,25 @@ defmodule ExkorpionSamples.MathExamplesTest do
       a - b
     end
 
+    @demo
     scenario "testing sum operation works as expected" do
+
+        
+      beforeEach do
+        %{a: 10}
+      end
 
         it "sum positive numbers works as expected" do
             %{
-                given: fn -> %{a: 1, b: 2} end,
+                given: fn -> 
 
+                  %{a: 1, b: 2} 
+                end,
                 when: fn ctx ->
                     %{c: ctx.a + ctx.b}
                 end,
                 then: fn ctx ->
-                    assert ctx.c === 3
+                    should(:eq,  ctx.c, 3)
                 end
             }
         end
@@ -33,10 +41,11 @@ defmodule ExkorpionSamples.MathExamplesTest do
                 %{c: sum(ctx.a, ctx.b)}
             end,
             then: fn ctx ->
-                assert ctx.c === -3
+                should(:eq,  ctx.c, -3)
             end
           }
         end
+
 
         it "does multiple operations depending on vairable input" do
 
@@ -54,7 +63,7 @@ defmodule ExkorpionSamples.MathExamplesTest do
                 %{c: ctx.op.(ctx.a, ctx.b)}
               end,
               then: fn ctx ->
-                assert ctx.c === ctx.result
+                should(:eq,  ctx.c, ctx.result)
               end
           }
         end
